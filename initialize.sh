@@ -38,30 +38,4 @@ pip3 install tensorboard
 yolo settings tensorboard=True
 yolo settings datasets_dir=./datasets weights_dir=./weights runs_dir=./runs
 echo "AM CREEAT ENVIRONMENT_UL"
-
-
-mkdir datasets
-cd utilitary
-pip3 install gdown pandas pyyaml
-python3 download.py
-cp mydataset/dataset.yaml ../ultralytics/cfg/datasets
-mv mydataset ../datasets
 deactivate
-
-# Second environment for inference
-
-# python3 -m venv inference_venv
-# source inference_venv/bin/activate
-# pip3 install numpy==1.26.4 pillow tensorflow pyyaml
-# pip3 install tensorflow 
-# pip3 install tflite_runtime-2.5.0.post1-cp39-cp39-linux_x86_64.whl
-# pip3 install pycoral-2.0.0-cp39-cp39-linux_x86_64.whl
-
-# pip3 install tensorboard
-# yolo settings tensorboard=True
-# yolo settings datasets_dir=./datasets weights_dir=./weights runs_dir=./runs
-
-
-# utils/loss.py
-# class DetectionModel(BaseModel): aici de inlocuit
-# ultralytics/nn/tasks.py 501
