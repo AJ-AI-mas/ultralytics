@@ -9,6 +9,7 @@ class Archiver:
         with open(yaml_file, "r") as f:
             data = yaml.load(f, Loader=yaml.SafeLoader)
             values["epochs"] = data["epochs"]
+            values["batch"] = data["batch"]
 
             data_path = data["data"]
             dataset_name = os.path.basename(data_path)
@@ -22,9 +23,8 @@ class Archiver:
             print("The file with model parameters is no longer there.")
             exit(1)
 
-        train_info = self.read_yaml_file_extract_data(os.path.join(folder_path, "args.yaml"))
-        model_filename = folder_path.replace("_saved_model/", "")
-        zip_filename = f"archives/{model_filename}_{train_info["dataset"]}_{train_info["epochs"]}.zip"
+        info = self.read_yaml_file_extract_data(os.path.join(folder_path, "args.yaml"))
+        zip_filename = f"archives/{folder_path}_{info["dataset"]}_{info["epochs"]}_batch{info["batch"]}.zip"
         filepaths = [os.path.join(folder_path, filename) for filename in filenames] 
         with ZipFile(zip_filename, 'w') as zip:
             for file in filepaths:

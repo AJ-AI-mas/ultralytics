@@ -37,11 +37,10 @@ mv ${SAVE_MODEL_PATH}/weights/last.pt ${SAVE_MODEL_PATH}
 rm -r ${SAVE_MODEL_PATH}/weights
 rm -r ${SAVE_MODEL_PATH}/*.jpg ${SAVE_MODEL_PATH}/*.png
 
-
 python3 archiver.py --folder ${SAVE_MODEL_PATH}
 
-source venv/bin/activate
-python3 visualize.py \
---data "./datasets/downtest/" \
---labels "./res/${MODEL_NAME}"
+# source venv/bin/activate
+# python3 visualize.py \
+# --data "./datasets/downtest/" \
+# --labels "./res/${MODEL_NAME}"
 deactivate

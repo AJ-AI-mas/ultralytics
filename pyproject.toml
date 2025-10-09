@@ -76,6 +76,7 @@ dependencies = [
     "roboflow",
     "dotenv",
     "tensorboard",
+    fiftyone,
     "ultralytics-thop>=2.0.0", # FLOPs computation https://github.com/ultralytics/thop
 ]
 
