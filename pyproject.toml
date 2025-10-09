@@ -73,6 +73,9 @@ dependencies = [
     "torchvision>=0.9.0",
     "psutil", # system utilization
     "polars",
+    "roboflow",
+    "dotenv",
+    "tensorboard",
     "ultralytics-thop>=2.0.0", # FLOPs computation https://github.com/ultralytics/thop
 ]
 

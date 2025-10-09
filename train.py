@@ -46,10 +46,10 @@ print(size)
 print("SE INCEPE ACUM ANTRENAREA")
 model.train(
     data=data_yaml,
-    epochs=200,
+    epochs=2,
     imgsz=size,
     rect=False,
-    batch=64,
+    batch=8,
     save_period=20,
     model=model,
     resume=False,

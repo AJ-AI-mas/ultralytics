@@ -27,15 +27,12 @@ source ~/.profile
 pyenv install 3.11.1
 pyenv shell 3.11.1
 echo "AM INSTALAT PYENV CU SUCCES"
+
 python3 -m venv venv
 source venv/bin/activate
-# pip install --upgrade pip
-# pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
 pip3 install -r requirements.txt
-pip3 install roboflow
-pip3 install dotenv
-pip3 install tensorboard
+pip3 install roboflow dotenv tensorboard
 yolo settings tensorboard=True
-yolo settings datasets_dir=./datasets weights_dir=./weights runs_dir=./runs
+yolo settings datasets_dir=$pwd/datasets weights_dir=$pwd/weights runs_dir=$pwd/runs
 echo "AM CREEAT ENVIRONMENT_UL"
 deactivate
