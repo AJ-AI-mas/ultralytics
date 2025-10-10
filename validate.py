@@ -2,8 +2,7 @@
 from ultralytics.models import YOLO
 import argparse
 import os
-import fiftyone as fo
-import fiftyone.utils.yolo as fouc
+# python3 validate.py --model yolo11n.pt --data ultralytics/cfg/datasets/VisDrone.yaml --size 1024
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-m', '--model', help='model pt path')
@@ -33,50 +32,19 @@ if (model == None):
     print("NU S-A PUTUT INITIALIZA MODELUL\n")
     exit(1)
 
-# print(size)
-# print("SE INCEPE ACUM VALIDAREA")
-# results = model.val(
-#     data=data_yaml,
-#     imgsz=size,
-#     conf=0.25,
-#     iou=0.60,
-#     rect=False,
-#     batch=8,
-#     save_conf=True,
-#     workers=4,
-#     verbose=True,
-#     save_json=True,
-#     save_txt=True
-# )
-
-# print(results.confusion_matrix.to_df())
-# print(results.summary())
-
-# Step 1: Load ground truth dataset (COCO format)
-dataset = fouc.add_yolo_labels(
-    dataset_name="standford-1",
-    dataset_type="detections",
-    data_path="datasets",
-    labels_path="datasets/standford-1/valid/labels",  # folder with YOLO labels
+print("SE INCEPE ACUM VALIDAREA")
+results = model.val(
+    data=data_yaml,
+    imgsz=size,
+    conf=0.25,
+    iou=0.3,
+    rect=False,
+    batch=8,
+    save_conf=True,
+    workers=4,
+    verbose=True,
+    save_json=True,
+    save_txt=True
 )
 
-# Step 2: Import predictions into the dataset
-fouc.add_coco_labels(
-    dataset,
-    "bbox",  # field name for predictions
-    "runs/detect/val/predictions.json",
-)
-
-# Step 3: Launch the FiftyOne app
-session = fo.launch_app(dataset)
-
-# (Optional) Step 4: Evaluate mAP, precision, recall, etc.
-results = dataset.evaluate_detections(
-    "yolo_predictions",
-    gt_field="detections",
-    eval_key="eval",
-    method="coco",
-)
-
-# Print evaluation results
-print(results.metrics())
+print(results.confusion_matrix.to_df())
