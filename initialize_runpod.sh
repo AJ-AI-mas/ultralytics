@@ -30,8 +30,7 @@ echo "AM INSTALAT PYENV CU SUCCES"
 
 python3 -m venv venv
 source venv/bin/activate
-pip3 install -r requirements.txt
-pip3 install roboflow dotenv tensorboard
+pip3 install .
 yolo settings tensorboard=True
 yolo settings datasets_dir=$pwd/datasets weights_dir=$pwd/weights runs_dir=$pwd/runs
 echo "AM CREEAT ENVIRONMENT_UL"
